@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+  --grass: #1a3a1a;
+  --dirt: #8B4513;
+  --chalk: #f5f0e8;
+  --night: #0a0e0a;
+  --card: #111611;
+  --border: #1f2e1f;
+  --green: #22c55e;
+  --red: #ef4444;
+  --gold: #f59e0b;
+  --blue: #3b82f6;
+  --muted: #4a5a4a;
+  --score-font: 'Bebas Neue', cursive;
+  --mono: 'DM Mono', monospace;
+  --body: 'DM Sans', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--night);
+  color: var(--chalk);
+  font-family: var(--body);
+  min-height: 100vh;
+}
+
+/* Scoreboard number style */
+.score { font-family: var(--score-font); letter-spacing: 0.05em; }
+.mono  { font-family: var(--mono); }
+
+/* Diamond grid background */
+.diamond-bg {
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,255,255,0.012) 40px,
+      rgba(255,255,255,0.012) 41px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,255,255,0.012) 40px,
+      rgba(255,255,255,0.012) 41px
+    );
+}
+
+/* Green accent line */
+.green-line {
+  border-left: 3px solid var(--green);
+  padding-left: 12px;
+}
+
+/* Scoreboard card */
+.sb-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+/* Win/loss badge */
+.badge-w { background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid rgba(34,197,94,0.3); }
+.badge-l { background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); }
+
+/* Nav tab */
+.nav-tab {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s;
+  color: var(--muted);
+}
+.nav-tab:hover { color: var(--chalk); }
+.nav-tab.active { color: var(--green); border-bottom-color: var(--green); }
+
+/* Pulse dot for live */
+.live-dot {
+  width: 7px; height: 7px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+  display: inline-block;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+/* Table styles */
+.dl-table { width: 100%; border-collapse: collapse; }
+.dl-table th {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.dl-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(31,46,31,0.5);
+  font-size: 13px;
+}
+.dl-table tr:last-child td { border-bottom: none; }
+.dl-table tr:hover td { background: rgba(34,197,94,0.03); }
+
+/* Position pill */
+.pos-pill {
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: rgba(255,255,255,0.07);
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+
+/* Stat cell */
+.stat-cell { font-family: var(--mono); font-size: 13px; }
+
+/* FAAB bar */
+.faab-bar {
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.faab-fill {
+  height: 100%;
+  background: var(--green);
+  border-radius: 2px;
+  transition: width 0.3s;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--night); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
